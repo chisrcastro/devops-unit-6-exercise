@@ -4,7 +4,8 @@
 module.exports = {
   siteMetadata: {
     title: `Unit 6 Exercise`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://chisrcastro.github.io/devops-unit-6-exercise/`,
   },
   plugins: [],
+  pathPrefix: `/devops-unit-6-exercise`,
 }
