@@ -5,7 +5,7 @@ on: push
 # A workflow can have one or more jobs.
 jobs:
   analyze:
-    name: Analyze
+    name: analyze
     runs-on: ubuntu-latest
     permissions:
       security-events: write
