@@ -135,6 +135,7 @@ const IndexPage = () => {
         Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
         update in real-time. 😎
       </p>
+      <p style={paragraphStyles}>This paragraph was added by Chi. 🍵</p>
       <ul style={listStyles}>
         <li style={docLinkStyle}>
           <a
