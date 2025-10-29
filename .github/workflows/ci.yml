@@ -42,10 +42,8 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
-    
       - name: Install dependencies
         run: npm install
-
       # Run the Jest unit tests and generate a coverage report.
       - name: test
         run: npm test -- --coverage || echo "No tests yet."
