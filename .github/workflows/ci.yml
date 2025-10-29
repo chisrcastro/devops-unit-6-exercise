@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: CI
+name: CI - Gatsby Build & Test
 # Run this workflow on any push to any branch.
 on: push
 # A workflow can have one or more jobs.
