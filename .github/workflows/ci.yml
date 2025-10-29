@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: CI - Gatsby Build & Test
+name: CI - Gatsby Build, Test, and Deploy
 # Run this workflow on any push to any branch.
 on: push
 # A workflow can have one or more jobs.
@@ -49,3 +49,17 @@ jobs:
       # Run the Jest unit tests and generate a coverage report.
       - name: test
         run: npm test -- --coverage || echo "No tests yet."
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gatsby-build
+          path: public
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
