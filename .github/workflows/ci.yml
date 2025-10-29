@@ -1,13 +1,25 @@
 # .github/workflows/ci.yml
 name: CI - Gatsby Build, Test, and Deploy
-permissions:
-  contents: write
-  pages: write
-  id-token: write
 # Run this workflow on any push to any branch.
 on: push
 # A workflow can have one or more jobs.
 jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
   build:
     # Run this job on a Github hosted action runner with the latest version of ubuntu installed.
     runs-on: ubuntu-latest
@@ -94,6 +106,10 @@ jobs:
       - name: test
         run: npm test -- --coverage || echo "No tests yet."
   deploy:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
